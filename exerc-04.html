@@ -3,12 +3,12 @@
     //entrada
     let potencialampada = parseFloat(prompt("Potencia da lampada utilizada?"))
     let largura = parseFloat(prompt("Largura do cômodo?"))
-    let comprimento = prompt ("comprimento do cômodo?")
+    let comprimento = parseFloat(prompt("comprimento do cômodo?"))
     //processamento
     let area = comprimento * largura
     let wattstotal = 18 * area
     quantidadelampadas = wattstotal / potencialampada
     //saida 
     document.write("A quantidade de lampadas necessaria: " + quantidadelampadas)
-    console.log
+
 </script>
