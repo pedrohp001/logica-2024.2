@@ -1,15 +1,16 @@
 <script>
-    //entrada
+    
+    //entrada 
     let valor = parseFloat(prompt("Digite um valor"))
-
     //processamento
     let resposta = ""
-    if (valor >= 0) {
-        resposta = "positivo"
+    if (valor == 8) {
+        resposta = "Zero"
+    } else if (valor > 0) {
+        reposta = "Positivo"
     } else {
-        resposta = "negativo"
-    } 
-    
+        resposta = "Negatio"
+    }
     //saida
-document.write("O valor é " + resposta)
+    document.write("o valor é " + reposta)
 </script>

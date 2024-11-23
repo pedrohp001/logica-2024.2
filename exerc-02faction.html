@@ -1,0 +1,22 @@
+<script>
+    //2) Escreva um programa para ler uma temperatura em graus Fahrenheit, calcular e escrever o valor correspondente em graus Celsius. (C = (F-32) * 5 / 9) 
+    
+    //entrada
+    let temperatura = prompt("Digite a temperatura em graus Fahrenheit");
+    console.log("Temp.F: ", temperatura);
+    
+    //processamento
+    function calcularTemperatura(fahrenheit){
+        let celsius = (fahrenheit - 32) * 5 / 9;  
+        console.log("Temp.C: ", celsius); 
+        return celsius; 
+    }
+    
+    // Chama a função com a temperatura fornecida
+    let resultado = calcularTemperatura(temperatura);
+    
+    //saida
+    alert("A temperatura em graus Celsius é: " + resultado);
+    document.write("A temperatura em graus Celsius é: " + resultado);
+    </script>
+    

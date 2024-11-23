@@ -1,0 +1,20 @@
+<script>
+    // 3) Escreva um programa para ler uma temperatura em graus Celsius, calcular e escrever o valor correspondente em graus Fahrenheit. (F = (C × 9/5) + 32)
+
+    // Função para converter Celsius para Fahrenheit
+    function converterCelsiusParaFahrenheit(celsius) {
+        return (celsius * 9 / 5) + 32; // Aplica a fórmula de conversão
+    }
+
+    // Entrada
+    let temperaturaCelsius = prompt("Digite a temperatura em graus Celsius ");
+    temperaturaCelsius = parseFloat(temperaturaCelsius); // Converte a entrada para número
+    console.log("Temp.C: ", temperaturaCelsius);
+
+    // Processamento
+    let resultadoFahrenheit = converterCelsiusParaFahrenheit(temperaturaCelsius); // Chama a função para converter
+
+    // Saída
+    alert("A temperatura em graus Fahrenheit é: " + resultadoFahrenheit);
+    document.write("A temperatura em graus Fahrenheit é: " + resultadoFahrenheit);
+</script>
