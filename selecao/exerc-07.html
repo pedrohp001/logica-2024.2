@@ -1,14 +1,18 @@
 <script>
-   //entrada 
-   let valor1 = parseFloat(prompt("Digite um valor"))
-   let valor2 = parseFloat(prompt("Digite outro valor"))
-   //processamento
-   let resposta = 0
-   if (valor1 > valor2) {
-    reposta = valor1
-   } else {
-    resposta = valor2
-   }
-   //saida 
-   document.write("o maior valor é " + reposta)
+    //8) Escreva um programa para ler o ano de nascimento de uma pessoa e escrever uma mensagem que diga se ela poderá ou não votar este ano (não é necessário considerar o mês em que ela nasceu). 
+
+    //entrada
+    let valor1 = parseFloat(prompt("Digite o ano de nascimeto"))
+    let anoAtual = 2024
+    //processamento
+    let idade = valor1 - anoAtual 
+    let resposta = " "
+    if (valor1 > 2006) {
+        resposta = "não pode votar"
+    } else {
+        resposta ="pode votar"
+    }
+
+    //saida 
+    document.write("Voce" + resposta)
 </script>

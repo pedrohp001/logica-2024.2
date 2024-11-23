@@ -1,18 +1,21 @@
 <script>
-    //8) Escreva um programa para ler o ano de nascimento de uma pessoa e escrever uma mensagem que diga se ela poderá ou não votar este ano (não é necessário considerar o mês em que ela nasceu). 
+    //9) As maçãs custam R$ 0,30 cada se forem compradas menos do que uma dúzia, e R$ 0,25 se forem compradas pelo menos doze. Escreva um programa que leia o número de maçãs compradas, calcule e escreva o valor total da compra. 
+
+    //se forem compradas a 0,30 seria 3,5 R$. se for 0,25 seria 3R$
 
     //entrada
-    let valor1 = parseFloat(prompt("Digite o ano de nascimeto"))
-    let anoAtual = 2024
+    let numerodemaças = parseFloat(prompt("Quantas maças foram compradas"))
+    
     //processamento
-    let idade = valor1 - anoAtual 
-    let resposta = " "
-    if (valor1 > 2006) {
-        resposta = "não pode votar"
+    let valortotal = "0"
+    let preçoduzia = 0.25
+    let preçomenos = 0.30
+    if (numerodemaças >= 12) {
+        valortotal = numerodemaças * preçoduzia
     } else {
-        resposta ="pode votar"
+        valortotal = numerodemaças * preçomenos
     }
+    //saida
+    document.write("foram compradas" + valortotal)
 
-    //saida 
-    document.write("Voce" + resposta)
 </script>

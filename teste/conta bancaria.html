@@ -1,0 +1,135 @@
+<script>
+    // Classe para representar a Conta Bancária
+    class Conta {
+        constructor(titular, saldoInicial = 0, tipo = "corrente") {
+            this.titular = titular;
+            this.saldo = saldoInicial;
+            this.tipo = tipo;
+        }
+
+        // Método para depósito
+        depositar(valor) {
+            if (valor > 0) {
+                this.saldo += valor;
+                return `Depósito de R$${valor.toFixed(2)} realizado com sucesso.`;
+            } else {
+                return "Valor inválido para depósito. O valor deve ser positivo.";
+            }
+        }
+
+        // Método para retirada
+        retirar(valor) {
+            if (valor <= 0) {
+                return "Valor inválido para retirada. O valor deve ser positivo.";
+            }
+            if (this.saldo >= valor) {
+                this.saldo -= valor;
+                return `Retirada de R$${valor.toFixed(2)} realizada com sucesso.`;
+            } else {
+                return "Saldo insuficiente para realizar a retirada.";
+            }
+        }
+
+        // Método para consultar saldo
+        consultarSaldo() {
+            return `O saldo da conta é R$${this.saldo.toFixed(2)}.`;
+        }
+
+        // Método para exibir dados da conta
+        exibirDados() {
+            return `Titular: ${this.titular}\nTipo de conta: ${this.tipo}\nSaldo: R$${this.saldo.toFixed(2)}`;
+        }
+    }
+
+    // Função para exibir o menu de opções
+    function exibirMenu() {
+        let opcao = prompt(`
+            MENU:
+            1 - Criar nova conta
+            2 - Depósito
+            3 - Retirada
+            4 - Consultar saldo
+            5 - Exibir dados da conta
+            6 - Sair
+        `);
+
+        return opcao;
+    }
+
+    // Função para criar uma nova conta
+    function criarConta() {
+        let titular = prompt("Digite o nome do titular da conta:");
+        let tipo = prompt("Digite o tipo da conta (corrente/poupanca):").toLowerCase();
+        let saldoInicial = parseFloat(prompt("Digite o saldo inicial da conta:"));
+
+        if (isNaN(saldoInicial) || saldoInicial < 0) {
+            saldoInicial = 0;
+            alert("Saldo inicial inválido. Definindo saldo inicial como R$0.");
+        }
+
+        return new Conta(titular, saldoInicial, tipo);
+    }
+
+    // Função principal para interagir com o usuário
+    function iniciarSistema() {
+        let conta = null;
+
+        while (true) {
+            let opcao = exibirMenu();
+
+            switch (opcao) {
+                case "1": // Criar nova conta
+                    conta = criarConta();
+                    alert("Conta criada com sucesso!");
+                    break;
+                case "2": // Depósito
+                    if (conta) {
+                        let valorDep = parseFloat(prompt("Digite o valor do depósito:"));
+                        if (isNaN(valorDep) || valorDep <= 0) {
+                            alert("Valor inválido para depósito.");
+                        } else {
+                            alert(conta.depositar(valorDep));
+                        }
+                    } else {
+                        alert("Você precisa criar uma conta primeiro.");
+                    }
+                    break;
+                case "3": // Retirada
+                    if (conta) {
+                        let valorRet = parseFloat(prompt("Digite o valor da retirada:"));
+                        if (isNaN(valorRet) || valorRet <= 0) {
+                            alert("Valor inválido para retirada.");
+                        } else {
+                            alert(conta.retirar(valorRet));
+                        }
+                    } else {
+                        alert("Você precisa criar uma conta primeiro.");
+                    }
+                    break;
+                case "4": // Consultar saldo
+                    if (conta) {
+                        alert(conta.consultarSaldo());
+                    } else {
+                        alert("Você precisa criar uma conta primeiro.");
+                    }
+                    break;
+                case "5": // Exibir dados da conta
+                    if (conta) {
+                        alert(conta.exibirDados());
+                    } else {
+                        alert("Você precisa criar uma conta primeiro.");
+                    }
+                    break;
+                case "6": // Sair
+                    alert("Saindo do sistema.");
+                    return;
+                default:
+                    alert("Opção inválida. Tente novamente.");
+                    break;
+            }
+        }
+    }
+
+    // Iniciar o sistema
+    iniciarSistema();
+</script>
