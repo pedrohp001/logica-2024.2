@@ -1,0 +1,20 @@
+<script>
+    // Entrada: Não há entrada de dados diretamente no código, pois estamos gerando os números ímpares entre 100 e 200.
+
+    // Processamento
+    function contimpares() {
+        let Resposta = "";
+        // Laço que percorre os números entre 100 e 200
+        for (let cont = 100; cont <= 200; cont++) {
+            // Verifica se o número é ímpar
+            if (cont % 2 != 0) {
+                Resposta += cont + ", "; // Adiciona o número ímpar à string Resposta
+            }
+        }
+        return Resposta; // Retorna a string com os números ímpares
+    }
+
+    // Saída
+    // Aqui, chamamos a função contimpares() para obter o valor e exibir no documento HTML.
+    document.write("Mostrar os números ímpares: <br>" + contimpares());
+</script>
