@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Bancário</title>
+    <style>
+        /* Resetando margens e preenchimentos padrão */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            overflow: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4e73df;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input, .form-group select, .form-group button {
+            width: 100%;
+            padding: 15px;
+            margin-top: 10px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .form-group button {
+            background-color: #4e73df;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-group button:hover {
+            background-color: #375a8c;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: #4e73df;
+        }
+
+        .balance-info {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .balance-info h2 {
+            color: #6c757d;
+        }
+
+        .balance-info .balance {
+            font-size: 24px;
+            font-weight: 600;
+            color: #28a745;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        .footer a {
+            color: #4e73df;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Sistema Bancário</h1>
+    <div id="menu">
+        <div class="form-group">
+            <button onclick="criarConta()">Criar Conta</button>
+        </div>
+        <div class="form-group">
+            <input type="number" id="valor" placeholder="Digite o valor" step="0.01" disabled>
+        </div>
+        <div class="form-group">
+            <button onclick="depositar()" id="depositarBtn" disabled>Depositar</button>
+            <button onclick="retirar()" id="retirarBtn" disabled>Retirar</button>
+        </div>
+        <div class="form-group">
+            <button onclick="consultarSaldo()" id="consultarSaldoBtn" disabled>Consultar Saldo</button>
+            <button onclick="exibirDados()" id="exibirDadosBtn" disabled>Exibir Dados da Conta</button>
+        </div>
+    </div>
+
+    <div id="balanceInfo" class="balance-info" style="display:none;">
+        <h2>Saldo Atual</h2>
+        <div id="saldo" class="balance">R$ 0,00</div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Banco XYZ. <a href="#">Política de Privacidade</a></p>
+    </div>
+</div>
+
+<script>
+    // Classe para representar a Conta Bancária
+    class Conta {
+        constructor(titular, saldoInicial = 0, tipo = "corrente") {
+            this.titular = titular;
+            this.saldo = saldoInicial;
+            this.tipo = tipo;
+        }
+
+        // Método para depósito
+        depositar(valor) {
+            if (valor > 0) {
+                this.saldo += valor;
+                return `Depósito de R$${valor.toFixed(2)} realizado com sucesso.`;
+            } else {
+                return "Valor inválido para depósito. O valor deve ser positivo.";
+            }
+        }
+
+        // Método para retirada
+        retirar(valor) {
+            if (valor <= 0) {
+                return "Valor inválido para retirada. O valor deve ser positivo.";
+            }
+            if (this.saldo >= valor) {
+                this.saldo -= valor;
+                return `Retirada de R$${valor.toFixed(2)} realizada com sucesso.`;
+            } else {
+                return "Saldo insuficiente para realizar a retirada.";
+            }
+        }
+
+        // Método para consultar saldo
+        consultarSaldo() {
+            return `O saldo da conta é R$${this.saldo.toFixed(2)}.`;
+        }
+
+        // Método para exibir dados da conta
+        exibirDados() {
+            return `Titular: ${this.titular}\nTipo de conta: ${this.tipo}\nSaldo: R$${this.saldo.toFixed(2)}`;
+        }
+    }
+
+    let conta = null;
+
+    // Função para criar uma nova conta
+    function criarConta() {
+        let titular = prompt("Digite o nome do titular da conta:");
+        let tipo = prompt("Digite o tipo da conta (corrente/poupanca):").toLowerCase();
+        let saldoInicial = parseFloat(prompt("Digite o saldo inicial da conta:"));
+
+        if (isNaN(saldoInicial) || saldoInicial < 0) {
+            saldoInicial = 0;
+            alert("Saldo inicial inválido. Definindo saldo inicial como R$0.");
+        }
+
+        conta = new Conta(titular, saldoInicial, tipo);
+        alert("Conta criada com sucesso!");
+        atualizarInterface();
+    }
+
+    // Atualiza a interface com os dados da conta
+    function atualizarInterface() {
+        if (conta) {
+            document.getElementById("saldo").innerText = `R$ ${conta.saldo.toFixed(2)}`;
+            document.getElementById("balanceInfo").style.display = "block";
+            document.getElementById("valor").disabled = false;
+            document.getElementById("depositarBtn").disabled = false;
+            document.getElementById("retirarBtn").disabled = false;
+            document.getElementById("consultarSaldoBtn").disabled = false;
+            document.getElementById("exibirDadosBtn").disabled = false;
+        }
+    }
+
+    // Função de depósito
+    function depositar() {
+        if (conta) {
+            const valor = parseFloat(document.getElementById("valor").value);
+            if (isNaN(valor) || valor <= 0) {
+                alert("Valor inválido para depósito.");
+            } else {
+                alert(conta.depositar(valor));
+                atualizarInterface();
+            }
+        }
+    }
+
+    // Função de retirada
+    function retirar() {
+        if (conta) {
+            const valor = parseFloat(document.getElementById("valor").value);
+            if (isNaN(valor) || valor <= 0) {
+                alert("Valor inválido para retirada.");
+            } else {
+                alert(conta.retirar(valor));
+                atualizarInterface();
+            }
+        }
+    }
+
+    // Função para consultar saldo
+    function consultarSaldo() {
+        if (conta) {
+            alert(conta.consultarSaldo());
+        }
+    }
+
+    // Função para exibir dados da conta
+    function exibirDados() {
+        if (conta) {
+            alert(conta.exibirDados());
+        }
+    }
+</script>
+
+</body>
+</html>

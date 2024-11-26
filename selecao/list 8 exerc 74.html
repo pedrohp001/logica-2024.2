@@ -1,0 +1,18 @@
+<script>
+    // Função que conta de 1 a 100 e emite uma mensagem para múltiplos de 10
+    let resposta = "";  // Corrigido o nome da variável para 'resposta'
+
+    function conteMultiplo() {
+        for (let cont = 1; cont <= 100; cont++) {  // Corrigido o erro no loop 'for'
+            if (cont % 10 == 0) {  // Se o número for múltiplo de 10
+                resposta += cont + " (múltiplo de 10)<br>";  // Corrigido o nome da variável
+            } else {
+                resposta += cont + "<br>";  // Caso contrário, apenas o número
+            }
+        }
+        return resposta;  // Retorna a resposta acumulada
+    }
+
+    // Chama a função e exibe o resultado na tela
+    document.write(conteMultiplo());
+</script>

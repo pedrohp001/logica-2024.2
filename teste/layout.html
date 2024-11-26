@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Conta Bancária</title>
+    <style>
+        /* Resetando margens e preenchimentos padrão */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: #0044cc;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .balance {
+            display: flex;
+            justify-content: space-between;
+            padding: 30px 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .balance h2 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .balance .value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        .transactions {
+            margin-top: 20px;
+        }
+
+        .transaction {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .transaction:last-child {
+            border-bottom: none;
+        }
+
+        .transaction .desc {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .transaction .amount {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .footer a {
+            color: #0044cc;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Minha Conta Bancária</h1>
+        </div>
+        <div class="balance">
+            <div>
+                <h2>Saldo Disponível</h2>
+                <div class="value">R$ 3.200,00</div>
+            </div>
+            <div>
+                <h2>Limite de Crédito</h2>
+                <div class="value">R$ 5.000,00</div>
+            </div>
+        </div>
+        <div class="transactions">
+            <h2>Transações Recentes</h2>
+            <div class="transaction">
+                <div class="desc">Pagamento supermercado</div>
+                <div class="amount">- R$ 200,00</div>
+            </div>
+            <div class="transaction">
+                <div class="desc">Depósito em conta</div>
+                <div class="amount">+ R$ 1.000,00</div>
+            </div>
+            <div class="transaction">
+                <div class="desc">Transferência recebida</div>
+                <div class="amount">+ R$ 500,00</div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>&copy; 2024 Banco XYZ. <a href="#">Política de Privacidade</a></p>
+        </div>
+    </div>
+</body>
+</html>
