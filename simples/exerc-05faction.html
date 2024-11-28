@@ -1,0 +1,20 @@
+<script>
+    // Função para calcular a quantidade de caixas de azulejos
+    function calcularCaixasAzulejos(comprimento, largura, altura) {
+        // Calcula a área das paredes
+        let area01 = comprimento * largura;
+        let area02 = comprimento * altura;
+        let quantidadeCaixas = ((area01 * 2) + (area02 * 2)) / 1.5;  
+
+        return quantidadeCaixas;
+    }
+
+    // Entrada:
+    let comprimento = parseFloat(prompt("Qual o comprimento da cozinha?"));
+    let largura = parseFloat(prompt("Qual a largura da cozinha?"));
+    let altura = parseFloat(prompt("Qual a altura da cozinha?"));
+    let resposta = calcularCaixasAzulejos(comprimento, largura, altura);
+
+    // Saída
+    document.write("Quantidade de caixas de azulejos necessárias: " + resposta);
+</script>

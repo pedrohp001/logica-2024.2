@@ -1,0 +1,21 @@
+<script>
+    // Função para calcular o número mínimo de litros necessários até o primeiro reabastecimento
+    function calcularCombustivelNecessario(comprimento, voltas, abastecimento, combustivel) {
+        let comprimentos = comprimento / 1000;
+        let voltasPorAbastecimento = voltas / abastecimento;
+        let distanciaPrimeiroAbastecimento = voltasPorAbastecimento * comprimentos;
+        let combustivelNecessario = distanciaPrimeiroAbastecimento / combustivel;
+        
+        return combustivelNecessario;
+    }
+
+    // Entrada
+    let comprimento = parseFloat(prompt("Comprimento da pista (em metros):"));
+    let voltas = parseFloat(prompt("Número de voltas a serem percorridas:"));
+    let abastecimento = parseFloat(prompt("Quantidade de reabastecimentos desejados:"));
+    let combustivel = parseFloat(prompt("Consumo de combustível (em Km/L):"));
+    let combustivelNecessario = calcularCombustivelNecessario(comprimento, voltas, abastecimento, combustivel);
+
+    // Saída
+    document.write("Combustível necessário até o primeiro reabastecimento: " + combustivelNecessario.toFixed(2) + " litros");
+</script>

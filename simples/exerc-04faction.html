@@ -1,0 +1,14 @@
+<script>
+    // Entrada
+    let potencialampada = parseFloat(prompt("Qual a potência da lâmpada utilizada?"));
+    let largura = parseFloat(prompt("Qual a largura do cômodo?"));
+    let comprimento = parseFloat(prompt("Qual o comprimento do cômodo?"));
+
+    // Processamento
+    let area = comprimento * largura;
+    let wattstotal = 18 * area;
+    let quantidadelampadas = Math.ceil(wattstotal / potencialampada);
+
+    // Saída
+    document.write("A quantidade de lâmpadas necessária: " + quantidadelampadas);
+</script>

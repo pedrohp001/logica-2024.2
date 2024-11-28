@@ -1,0 +1,21 @@
+<script>
+// Inicializando o vetor de tamanho 10
+let elementos = []
+    let resposta = ""
+
+    // Entrada: Leitura dos valores do vetor
+    for (let index = 0; index < 10; index++) {
+        elementos[index] = parseInt(prompt("Digite o valor"))
+
+        // Processamento
+        if (elementos[index] === 25) {
+           
+            resposta += `${index},`
+        }
+    }
+
+    // Saída
+    document.write(`Posição encontrada(s): ${resposta}`);
+
+
+</script>

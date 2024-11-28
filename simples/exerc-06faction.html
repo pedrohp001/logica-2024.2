@@ -1,0 +1,26 @@
+<script>
+    // Função para calcular o rendimento do táxi
+    function calcularRendimento(odometroinicial, odometrofinal, litrosgastos, valorrecebido) {
+        const precocombustivel = 4.87;  // Preço do combustível fixado
+
+        let distanciapercorrida = odometrofinal - odometroinicial;
+        let mediaconsumo = distanciapercorrida / litrosgastos;
+        let custocombustivel = litrosgastos * precocombustivel;
+        let lucroliquido = valorrecebido - custocombustivel;
+        return {
+            mediaconsumo: mediaconsumo,
+            lucroliquido: lucroliquido
+        };
+    }
+
+    // Entrada
+    let odometroinicial = parseFloat(prompt("Digite a marcação do odômetro no início do dia (em Km): "));
+    let odometrofinal = parseFloat(prompt("Digite a marcação do odômetro no final do dia (em Km): "));
+    let litrosgastos = parseFloat(prompt("Digite o número de litros gastos: "));
+    let valorrecebido = parseFloat(prompt("Digite o valor total (R$) recebido dos passageiros: "));
+    let resultado = calcularRendimento(odometroinicial, odometrofinal, litrosgastos, valorrecebido);
+
+    // Saída
+    document.write("Média de consumo: " + resultado.mediaconsumo.toFixed(2) + " Km/L<br>");
+    document.write("Lucro líquido do dia: R$ " + resultado.lucroliquido.toFixed(2));
+</script>
